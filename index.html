@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <!-- The DOM -->
+    <div class="flex items-center justify-center h-screen">
+        <div class="p-8 bg-gray-200">
+    <h1 class="text-3xl font-bold text-gray-800 text-center mb-4">Let's Roll</h1>
+    <div class="flex items-center justify-center space-x-2 mb-4">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded " id='rollBtn'>Roll</button>: <span id="diceNumber"></span>
+    </div>
+
+    <div class="flex items-center justify-center space-x-2 mb-4">
+        <span id="userInput" class="font-bold text-xl"></span>
+        </div>
+    <div class="flex items-center justify-center space-x-2 mb-4">
+            <span id="diceFaceImage"></span>
+            </div>
+
+
+    <div class="flex items-center justify-center space-x-2 mb-8 mt-8">
+        Topic: <input type="text" class="border-0 border-b border-gray-300 rounded-none p-1 text-gray-700 bg-transparent focus:outline-none focus:ring-0 focus:border-blue-500" id="topic" placeholder="Let's decide..."/>
+        
+    </div>
+    <div class="flex items-center justify-center space-x-2">
+    <ul>
+    <li class="mb-4">1: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberOne"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
+    <li class="mb-4">2: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberTwo"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
+    <li class="mb-4">3: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberThree"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
+    <li class="mb-4">4: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberFour"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
+    <li class="mb-4">5: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberFive"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
+    <li class="mb-4">6: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberSix"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
+    </ul>
+    </div>
+    
+
+
+    <p class="fixed bottom-2 right-2 text-xs text-gray-500 opacity-70 attribution"> Dice icons from <a href="https://game-icons.net" target="_blank" class="text-gray-500 opacity-70">Game Icons</a>, used under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" class="text-gray-500 opacity-70">CC BY 3.0</a> / Colors changed from original </p>
+</div>
+</div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
