@@ -6,12 +6,45 @@ var diceFace4 = "images/dice_face4.png"
 var diceFace5 = "images/dice_face5.png"
 var diceFace6 = "images/dice_face6.png"
 
+function startDiceAnimation() {
+  var diceFaces = [
+    "images/dice_face1.png",
+    "images/dice_face2.png",
+    "images/dice_face3.png",
+    "images/dice_face4.png",
+    "images/dice_face5.png",
+    "images/dice_face6.png"
+  ];
+
+  var currentIndex = 0;
+  var intervalId;
+
+  function changeDiceFace() {
+    document.getElementById("dice").style.backgroundImage = `url(${diceFaces[currentIndex]})`;
+    currentIndex = (currentIndex + 1) % diceFaces.length; // Loop back to the first image
+  }
+
+  // Change every 100 milliseconds
+  intervalId = setInterval(changeDiceFace, 100);
+
+  // Stop the animation after 5 seconds (5000 milliseconds) and make the image disappear
+  setTimeout(function() {
+    clearInterval(intervalId);
+    document.getElementById("dice").style.backgroundImage = 'none';
+  }, 5000);
+}
+
+
+
+
 
 
 
 
 
 function rollTheDice() {
+  diceFaceImage.innerHTML = '';
+  startDiceAnimation();
   const number = Math.floor(Math.random() * 6) + 1;
   let inputContent = '';
   //let imageSrc = '';
@@ -34,8 +67,10 @@ function rollTheDice() {
     case 6: inputContent = document.getElementById('numberSix').value;
     //imageSrc = diceFace6;
     break; }
-    document.getElementById('userInput').textContent = inputContent;
-    document.getElementById('decisionMessage').textContent = "<--Dice God has decided-->";
+    
+    setTimeout(() => {document.getElementById('userInput').textContent = inputContent; }, 5000); // 5000 milliseconds = 5 seconds
+    
+  
     return number; }
 
 
@@ -45,15 +80,19 @@ const diceNumber = document.querySelector("#diceNumber");
 const deleteBtn = document.querySelector("#deleteBtn")
 const userInput = document.querySelector("#userInput");
 
+
+//dice roll
 rollBtn.addEventListener("click", rollTheDice);
-
-
 
 rollBtn.addEventListener('click', function(){
   const rolledNumber = rollTheDice();
-  diceNumber.innerHTML = `You got ${rolledNumber}.`;
-  diceFaceImage.innerHTML = `<img src="${window[`diceFace${rolledNumber}`]}" alt="Dice Face" style="width: 84px; height: 84px; border-radius: 12px;">`;
-  
+ 
+
+  setTimeout(() => {
+    diceNumber.innerHTML = `You got ${rolledNumber}.`;
+    document.getElementById('decisionMessage').textContent = "<--Dice God has decided-->";
+    diceFaceImage.innerHTML = `<img src="${window[`diceFace${rolledNumber}`]}" alt="Dice Face" style="width: 84px; height: 84px; border-radius: 12px;">`; }, 5000); // 5000 milliseconds = 5 seconds
+    
 });
 
 
@@ -111,7 +150,7 @@ const resetPage = () => {
   document.getElementById('userInput').textContent = '';
   document.getElementById('decisionMessage').textContent = '';
   document.getElementById('diceNumber').textContent = '';
-  document.getElementById('diceFaceImage').innerHTML = '';
+  document.getElementById('diceFaceImage').innerHTML = '<img src="images/dice_face6.png" alt="Dice Face" style="width: 100%; height: 100%; border-radius: 12px;">';
   document.getElementById('topicInput').innerHTML = 'Topic: '; };
 
 document.addEventListener('DOMContentLoaded', (event) => {
