@@ -17,14 +17,12 @@
 </head>
 <body>
     <div class="flex items-center justify-center min-h-screen p-2 bg-gray-200">
-        <div class="bg-white border border-gray-300 p-6 md:p-10 rounded-lg w-full max-w-lg">
+        <div class="bg-white border border-gray-300 p-4 md:p-6 rounded-lg w-full max-w-lg">
             <div class="p-4 bg-gray-200 w-full">
                 <div class="flex items-center justify-center space-x-2 md:space-x-4 mb-4">
                     <button id="infoIcon" class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-blue-600">
                         <span class="font-bold">i</span>
                     </button>
-                    <button id="screenshot" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded text-xs">SCREENSHOT</button>
-                    <button id="resetBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs">RESET ALL</button>
                 </div>
                 
                 <div id="infoBox" class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 max-w-xs md:max-w-sm opacity-80 z-50">
@@ -37,30 +35,30 @@
                     </button>
                 </div>
 
-                <h1 class="text-2xl font-bold text-gray-800 text-center mb-6 md:mb-12 mt-6 md:mt-12">Roll The Dice</h1>
+                <h1 class="text-2xl font-bold text-gray-800 text-center mb-4 md:mb-4 mt-6 md:mt-6">Roll The Dice</h1>
 
-                <div class="flex items-center justify-center mb-4">
+                <div class="flex items-center justify-center mb-1 mt-1">
                     <div class="relative" style="width: 72px; height: 72px;">
-                        <img id="diceFaceImage" src="images/dice_face6.png" alt="Dice Face" class="w-full h-full rounded-lg">
-                        <span id="dice" class="absolute top-0 left-0 w-full h-full bg-cover transition-all duration-100 rounded-lg"></span>
+                        <span id="diceFaceImage" ><img src="images/dice_face6.png" alt="Dice Face" class="w-full h-full rounded-lg"></span>
+                        <div id="dice" class="absolute top-0 left-0 w-full h-full bg-cover transition-all duration-100 rounded-lg"></div>
                     </div>
                 </div>
               
-                <div class="flex flex-col items-center justify-center space-y-2 mb-8">
-                    <span id="diceNumber" class="mt-4"></span>
-                    <p id="decisionMessage" class="mb-2 mt-2 text-sm flex-grow"></p>
-                    <div id="userInput" class="font-bold text-lg mb-2 mt-2"></div>
+                <div class="flex flex-col items-center justify-center space-y-2 mb-2">
+                    <span id="diceNumber" class="mt-2"></span>
+                    <p id="decisionMessage" class="mb-1 mt-1 text-sm flex-grow"></p>
+                    <div id="userInput" class="font-bold text-lg mb-1 mt-1"></div>
                 </div>
               
-                <div class="flex flex-col items-center justify-center space-y-2 mb-8 mt-8">
-                    <div id="topicInput" class ="text-sm mb-2 mt-2 max-w-xs text-center break-words">Topic: </div>
+                <div class="flex flex-col items-center justify-center space-y-2 mb-4 mt-2">
+                    <div id="topicInput" class ="text-sm mb-1 mt-0 max-w-xs text-center break-words">Topic: </div>
                     <div class="flex items-center space-x-2">
                         <input type="text" class="border-0 border-b border-gray-300 rounded-none p-1 text-gray-700 bg-transparent focus:outline-none focus:ring-0 focus:border-blue-500" id="topic" placeholder="Let's decide..."/>
                         <button class="enter-btn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="enterBtn">+</button>
                     </div>
                 </div>
               
-                <div class="flex flex-col items-center justify-center space-x-2 mb-8">
+                <div class="flex flex-col items-center justify-center space-x-2 mb-0">
                     <ul>
                         <li class="mb-4 flex items-center">1: <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberOne"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
                         <li class="mb-4 flex items-center">2: <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberTwo"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
@@ -71,10 +69,13 @@
                     </ul>
                 </div>
               
-                <div class="flex items-center justify-center mb-4">
+                <div class="flex items-center justify-center mb-2">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" id="rollBtn">ROLL!</button>
                 </div>
-    
+                <div class="flex items-center justify-center space-x-2 md:space-x-4 mb-4">
+                <button id="screenshot" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded text-xs">SCREENSHOT</button>
+                <button id="resetBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs">RESET ALL</button>
+                </div>
                 <footer class="w-full text-xs text-gray-500 opacity-40 custom-font mt-6"> Dice icons from <a href="https://game-icons.net" target="_blank" class="text-gray-500 opacity-70">Game Icons</a>, used under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" class="text-gray-500 opacity-70">CC BY 3.0</a> / Colors changed from original </footer>
             </div>
         </div>

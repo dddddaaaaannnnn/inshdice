@@ -31,7 +31,7 @@ function startDiceAnimation() {
   setTimeout(function() {
     clearInterval(intervalId);
     document.getElementById("dice").style.backgroundImage = 'none';
-  }, 5000);
+  }, 4999);
 }
 
 
@@ -43,8 +43,8 @@ function startDiceAnimation() {
 
 
 function rollTheDice() {
-  diceFaceImage.innerHTML = '';
-  startDiceAnimation();
+ 
+  
   const number = Math.floor(Math.random() * 6) + 1;
   let inputContent = '';
   //let imageSrc = '';
@@ -68,7 +68,8 @@ function rollTheDice() {
     //imageSrc = diceFace6;
     break; }
     
-    setTimeout(() => {document.getElementById('userInput').textContent = inputContent; }, 5000); // 5000 milliseconds = 5 seconds
+    setTimeout(() => {document.getElementById('userInput').textContent = inputContent;
+     }, 5000); // 5000 milliseconds = 5 seconds
     
   
     return number; }
@@ -77,8 +78,9 @@ function rollTheDice() {
 
 const rollBtn = document.querySelector("#rollBtn");
 const diceNumber = document.querySelector("#diceNumber");
-const deleteBtn = document.querySelector("#deleteBtn")
+const deleteBtn = document.querySelector("#deleteBtn");
 const userInput = document.querySelector("#userInput");
+const diceFaceImage = document.querySelector("#diceFaceImage");
 
 
 //dice roll
@@ -86,12 +88,13 @@ rollBtn.addEventListener("click", rollTheDice);
 
 rollBtn.addEventListener('click', function(){
   const rolledNumber = rollTheDice();
- 
 
+  startDiceAnimation();
   setTimeout(() => {
     diceNumber.innerHTML = `You got ${rolledNumber}.`;
+    document.getElementById('diceFaceImage').innerHTML = '';
     document.getElementById('decisionMessage').textContent = "<--Dice God has decided-->";
-    diceFaceImage.innerHTML = `<img src="${window[`diceFace${rolledNumber}`]}" alt="Dice Face" style="width: 84px; height: 84px; border-radius: 12px;">`; }, 5000); // 5000 milliseconds = 5 seconds
+    document.getElementById('diceFaceImage').innerHTML = `<img src="${window[`diceFace${rolledNumber}`]}" alt="Dice Face" style="width: 72px; height: 72px; border-radius: 12px;">`; }, 5000); // 5000 milliseconds = 5 seconds
     
 });
 
