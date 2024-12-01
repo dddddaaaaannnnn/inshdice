@@ -35,6 +35,7 @@ function rollTheDice() {
     //imageSrc = diceFace6;
     break; }
     document.getElementById('userInput').textContent = inputContent;
+    document.getElementById('decisionMessage').textContent = "<--Dice God has decided-->";
     return number; }
 
 
@@ -51,18 +52,46 @@ rollBtn.addEventListener("click", rollTheDice);
 rollBtn.addEventListener('click', function(){
   const rolledNumber = rollTheDice();
   diceNumber.innerHTML = `You got ${rolledNumber}.`;
-  diceFaceImage.innerHTML = `<img src="${window[`diceFace${rolledNumber}`]}" alt="Dice Face" style="width: 100px; height: 100px; border-radius: 15px;">`;
-  //const imageSrc = eval(`diceFace${rolledNumber}`); diceFaceImage.innerHTML = `<img src="${imageSrc}" alt="Dice Face">`;
+  diceFaceImage.innerHTML = `<img src="${window[`diceFace${rolledNumber}`]}" alt="Dice Face" style="width: 84px; height: 84px; border-radius: 12px;">`;
+  
 });
 
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  const enterBtn = document.getElementById('enterBtn');
+  const topicInput = document.getElementById('topicInput');
+  const topicField = document.getElementById('topic');
+
+  const updateContent = () => {
+    topicInput.innerHTML = `Topic: ${topicField.value}  <button class="delete-entered bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 rounded text-xs mx-1" id="deleteEnteredBtn">x</button>`;
+    topicField.value = '';
+
+    // Add event listener for delete button after it is created
+    const deleteEnteredBtn = document.getElementById('deleteEnteredBtn');
+    deleteEnteredBtn.addEventListener('click', () => {
+      topicInput.innerHTML = `Topic: <--empty-->`;
+      topicField.value = '';
+    });
+  };
+
+  enterBtn.addEventListener('click', () => {
+    updateContent();
+  });
+
+  topicField.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      updateContent();
+    }
+  });
+});
 
 
+  
 
 
 //delete button function for input
   document.addEventListener('DOMContentLoaded', (event) => {
-    document.querySelector('.p-8').addEventListener('click', function(e) {
+    document.querySelector('.p-16').addEventListener('click', function(e) {
       if (e.target && e.target.classList.contains('delete-btn')) {
         const listItem = e.target.closest('li');
         if (listItem) {
@@ -70,7 +99,54 @@ rollBtn.addEventListener('click', function(){
           if (inputField) {
             inputField.value = ''; } } } }); });
 
+// Reset button functionality
+const resetPage = () => {
+  document.getElementById('numberOne').value = '';
+  document.getElementById('numberTwo').value = '';
+  document.getElementById('numberThree').value = '';
+  document.getElementById('numberFour').value = '';
+  document.getElementById('numberFive').value = '';
+  document.getElementById('numberSix').value = '';
+  document.getElementById('topic').value = '';
+  document.getElementById('userInput').textContent = '';
+  document.getElementById('decisionMessage').textContent = '';
+  document.getElementById('diceNumber').textContent = '';
+  document.getElementById('diceFaceImage').innerHTML = '';
+  document.getElementById('topicInput').innerHTML = 'Topic: '; };
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  resetBtn.addEventListener('click', resetPage);
+});
 
 
+//Screenshot
+document.getElementById('screenshot').addEventListener('click', function() {
+  takeScreenshot();
+  console.log("Screenshot function called");
+});
 
-          
+function takeScreenshot() {
+  if (confirm("Are you sure you want to take a screenshot?")) {
+    html2canvas(document.body).then(function(canvas) {
+      var dataURL = canvas.toDataURL("image/png");
+      var link = document.createElement('a');
+      link.download = 'screenshot.png';
+      link.href = dataURL;
+      link.click();
+    });
+  }
+}
+
+
+//info box
+const infoIcon = document.getElementById('infoIcon');
+const infoBox = document.getElementById('infoBox');
+const closeInfoBox = document.getElementById('closeInfoBox');
+
+infoIcon.addEventListener('click', () => {
+  infoBox.classList.toggle('hidden');
+});
+
+closeInfoBox.addEventListener('click', () => {
+  infoBox.classList.add('hidden');
+});

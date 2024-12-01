@@ -4,48 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- font -->
+    <style> body {
+        font-family: 'Press Start 2P', sans-serif, Arial;
+    }
+    .custom-font {
+        font-family: Arial, sans-serif;
+    }
+    </style>
+    <title>Roll The Dice</title>
 </head>
 <body>
     <!-- The DOM -->
-    <div class="flex items-center justify-center h-screen">
-        <div class="p-8 bg-gray-200">
-    <h1 class="text-3xl font-bold text-gray-800 text-center mb-4">Let's Roll</h1>
-    <div class="flex items-center justify-center space-x-2 mb-4">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded " id='rollBtn'>Roll</button>: <span id="diceNumber"></span>
-    </div>
 
-    <div class="flex items-center justify-center space-x-2 mb-4">
-        <span id="userInput" class="font-bold text-xl"></span>
-        </div>
-    <div class="flex items-center justify-center space-x-2 mb-4">
-            <span id="diceFaceImage"></span>
+    <div class="flex items-center justify-center min-h-screen p-2 bg-gray-200 ">
+        <div class="bg-white border border-gray-300 p-10 rounded-lg">
+        <div class="p-16 bg-gray-200 w-full md:w-auto ">
+
+      
+
+            <div class=" top-16 transform  flex items-center justify-center  space-x-4">
+                
+                <button id="infoIcon" class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-blue-600">
+                    <span class="font-bold">i</span>
+                </button>
+                <button id="screenshot" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded">SCREENSHOT</button>
+                <button id="resetBtn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">RESET ALL</button>
             </div>
+            
+
+              <div id="infoBox" class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 max-w-sm opacity-80">
+                <h2 class="text-xl font-bold mb-4">Information</h2>
+                <p class="mb-2">Can't decide what to do? Can't decide where to go? Can't decide by yourself? It's okay! Just ask Dice God!</p>
+                <p class="mb-2">Assign your options to the dice. Roll it. Dice God will make a decision for you. Enjoy :)</p>
+                <p>**Play responsibly and never use Dice God for evil stuff!**</p>
+                <button id="closeInfoBox" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
+
+    <h1 class="text-2xl font-bold text-gray-800 text-center mb-8 mt-16">Roll The Dice</h1>
 
 
-    <div class="flex items-center justify-center space-x-2 mb-8 mt-8">
-        Topic: <input type="text" class="border-0 border-b border-gray-300 rounded-none p-1 text-gray-700 bg-transparent focus:outline-none focus:ring-0 focus:border-blue-500" id="topic" placeholder="Let's decide..."/>
-        
-    </div>
-    <div class="flex items-center justify-center space-x-2">
-    <ul>
-    <li class="mb-4">1: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberOne"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
-    <li class="mb-4">2: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberTwo"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
-    <li class="mb-4">3: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberThree"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
-    <li class="mb-4">4: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberFour"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
-    <li class="mb-4">5: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberFive"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
-    <li class="mb-4">6: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberSix"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">Delete</button></li>
-    </ul>
-    </div>
+
+    <div class="flex items-center justify-center space-x-2 mb-4">
+        <span id="diceFaceImage"></span>
+        </div>
+        <div class="flex flex-col items-center justify-center space-y-2 mb-8">
+            <span id="diceNumber" class =" mt-4"></span>
+            <p id="decisionMessage" class="mb-2 mt-2"></p>
+            <div id="userInput" class="font-bold text-sm mb-2 mt-2"></div>
+        </div>
+
+
+
+        <div class="flex flex-col items-center justify-center space-y-2 mb-8 mt-8">
+            <div id="topicInput" class =" text-sm mb-2 mt-2 max-w-md break-words text-center">Topic: </div>
+            <div class="flex items-center space-x-2"> <input type="text" class="border-0 border-b border-gray-300 rounded-none p-1 text-gray-700 bg-transparent focus:outline-none focus:ring-0 focus:border-blue-500" id="topic" placeholder="Let's decide..."/>
+            <button class="enter-btn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="enterBtn">+</button>
+      
+        </div>
+        </div>
+    
     
 
+    <!-- input area and delete buttons -->
+    <div class="flex items-center justify-center space-x-2">
+    <ul>
+    <li class="mb-4">1: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberOne"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
+    <li class="mb-4">2: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberTwo"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
+    <li class="mb-4">3: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberThree"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
+    <li class="mb-4">4: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberFour"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
+    <li class="mb-4">5: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberFive"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
+    <li class="mb-4">6: <input type="text" class="border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberSix"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
+    </ul>
+    </div>
+    <div class="flex flex-col items-center justify-center space-x-2 mb-4">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded " id='rollBtn'>ROLL!</button>
+        
+        </div>
 
-    <p class="fixed bottom-2 right-2 text-xs text-gray-500 opacity-70 attribution"> Dice icons from <a href="https://game-icons.net" target="_blank" class="text-gray-500 opacity-70">Game Icons</a>, used under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" class="text-gray-500 opacity-70">CC BY 3.0</a> / Colors changed from original </p>
+    
+    
+
+    <footer class="  w-full text-xs text-gray-500 opacity-40 custom-font  mt-6"> Dice icons from <a href="https://game-icons.net" target="_blank" class="text-gray-500 opacity-70">Game Icons</a>, used under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" class="text-gray-500 opacity-70">CC BY 3.0</a> / Colors changed from original </footer>
 </div>
+
+
+</div>
+
 </div>
 
 
 
     <script src="script.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </body>
 </html>
