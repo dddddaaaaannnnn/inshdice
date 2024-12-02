@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+ 
+
     <style> 
         body {
             font-family: 'Press Start 2P', sans-serif, Arial;
@@ -17,14 +19,20 @@
 </head>
 <body>
     <div class="flex items-center justify-center min-h-screen p-2 bg-gray-200">
-        <div class="bg-white border border-gray-300 p-4 md:p-6 rounded-lg w-full max-w-lg">
+        <div class="bg-white border border-gray-300 p-4 md:p-6 rounded-lg w-full max-w-lg overflow-hidden">
             <div class="p-4 bg-gray-200 w-full">
                 <div class="flex items-center justify-center space-x-2 md:space-x-4 mb-4">
                     <button id="infoIcon" class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-blue-600">
                         <span class="font-bold">i</span>
                     </button>
+                    
+
+
+
                 </div>
                 
+
+            <!-- info popup -->    
                 <div id="infoBox" class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 max-w-xs md:max-w-sm opacity-80 z-50">
                     <h2 class="text-xl font-bold mb-4">Information</h2>
                     <p class="mb-2">Can't decide what to do? Can't decide where to go? Can't decide by yourself? It's okay! Just ask Dice God!</p>
@@ -34,6 +42,21 @@
                       &times;
                     </button>
                 </div>
+            <!-- warning popup --> 
+                <div id="warningBox" class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 max-w-xs md:max-w-sm opacity-80 z-50">
+                    <h2 class="text-xl font-bold mb-4">Warning</h2>
+                    <p class="mb-2">You're rolling too many times. Don't be disrespecting Dice God like that!</p>
+                    <p class="mb-2">Roll once, let Dice God decide, then follow your fate.</p>
+                    <p>**Play responsibly and never use Dice God for evil stuff!**</p>
+                    <button id="closeWarningBox" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl font-bold">
+                      &times;
+                    </button>
+                </div>
+
+
+
+
+
 
                 <h1 class="text-2xl font-bold text-gray-800 text-center mb-4 md:mb-4 mt-6 md:mt-6">Roll The Dice</h1>
 
@@ -46,28 +69,54 @@
               
                 <div class="flex flex-col items-center justify-center space-y-2 mb-2">
                     <span id="diceNumber" class="mt-2"></span>
-                    <p id="decisionMessage" class="mb-1 mt-1 text-sm flex-grow"></p>
+                    <p id="decisionMessage" class="mb-1 mt-1 text-sm flex-grow whitespace-nowrap overflow-hidden text-ellipsis"></p>
                     <div id="userInput" class="font-bold text-lg mb-1 mt-1"></div>
                 </div>
               
+
+         
                 <div class="flex flex-col items-center justify-center space-y-2 mb-4 mt-2">
                     <div id="topicInput" class ="text-sm mb-1 mt-0 max-w-xs text-center break-words">Topic: </div>
                     <div class="flex items-center space-x-2">
-                        <input type="text" class="border-0 border-b border-gray-300 rounded-none p-1 text-gray-700 bg-transparent focus:outline-none focus:ring-0 focus:border-blue-500" id="topic" placeholder="Let's decide..."/>
+                        <input type="text" class="border-0 border-b border-gray-300 rounded-none p-1 text-gray-700 bg-transparent focus:outline-none focus:ring-0 focus:border-blue-500 flex-grow w-full max-w-full" id="topic" placeholder="Let's decide..."/>
                         <button class="enter-btn bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="enterBtn">+</button>
                     </div>
                 </div>
-              
-                <div class="flex flex-col items-center justify-center space-x-2 mb-0">
-                    <ul>
-                        <li class="mb-4 flex items-center">1: <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberOne"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
-                        <li class="mb-4 flex items-center">2: <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberTwo"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
-                        <li class="mb-4 flex items-center">3: <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberThree"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
-                        <li class="mb-4 flex items-center">4: <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberFour"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
-                        <li class="mb-4 flex items-center">5: <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberFive"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
-                        <li class="mb-4 flex items-center">6: <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" id="numberSix"/><button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1" id="deleteBtn">x</button></li>
-                    </ul>
-                </div>
+
+                     <!-- user input list-->  
+                <ul class="w-full">
+                    <li class="mb-4 flex items-center w-full">
+                      <span class="mr-2">1:</span>
+                      <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-[calc(100%-4rem)]" id="numberOne" />
+                      <button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1">x</button>
+                    </li>
+                    <li class="mb-4 flex items-center w-full">
+                      <span class="mr-2">2:</span>
+                      <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-[calc(100%-4rem)]" id="numberTwo" />
+                      <button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1">x</button>
+                    </li>
+                    <li class="mb-4 flex items-center w-full">
+                      <span class="mr-2">3:</span>
+                      <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-[calc(100%-4rem)]" id="numberThree" />
+                      <button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1">x</button>
+                    </li>
+                    <li class="mb-4 flex items-center w-full">
+                      <span class="mr-2">4:</span>
+                      <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-[calc(100%-4rem)]" id="numberFour" />
+                      <button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1">x</button>
+                    </li>
+                    <li class="mb-4 flex items-center w-full">
+                      <span class="mr-2">5:</span>
+                      <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-[calc(100%-4rem)]" id="numberFive" />
+                      <button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1">x</button>
+                    </li>
+                    <li class="mb-4 flex items-center w-full">
+                      <span class="mr-2">6:</span>
+                      <input type="text" class="flex-grow border border-gray-300 rounded-md p-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-[calc(100%-4rem)]" id="numberSix" />
+                      <button class="delete-btn bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs mx-1">x</button>
+                    </li>
+                  </ul>
+                  
               
                 <div class="flex items-center justify-center mb-2">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" id="rollBtn">ROLL!</button>

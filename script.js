@@ -1,3 +1,8 @@
+
+
+
+
+
 //dice face images
 var diceFace1 = "images/dice_face1.png"
 var diceFace2 = "images/dice_face2.png"
@@ -36,16 +41,27 @@ function startDiceAnimation() {
 
 
 
+//too many rolls warning popup
+let rollCount = 0;
+const warningBox = document.getElementById('warningBox');
+const closeWarningBox = document.getElementById('closeWarningBox');
+closeWarningBox.addEventListener('click', () => {
+  warningBox.classList.add('hidden');
+});
+function tooManyRolls(){
+  if(rollCount>=8){
+    warningBox.classList.toggle('hidden');
+    rollCount = 0;
 
-
-
-
+  }
+};
 
 
 function rollTheDice() {
  
   
   const number = Math.floor(Math.random() * 6) + 1;
+  
   let inputContent = '';
   //let imageSrc = '';
   switch (number) {
@@ -88,6 +104,8 @@ rollBtn.addEventListener("click", rollTheDice);
 
 rollBtn.addEventListener('click', function(){
   const rolledNumber = rollTheDice();
+  rollCount++;
+  tooManyRolls();
 
   startDiceAnimation();
   setTimeout(() => {
@@ -154,9 +172,13 @@ const resetPage = () => {
   document.getElementById('decisionMessage').textContent = '';
   document.getElementById('diceNumber').textContent = '';
   document.getElementById('diceFaceImage').innerHTML = '<img src="images/dice_face6.png" alt="Dice Face" style="width: 100%; height: 100%; border-radius: 12px;">';
-  document.getElementById('topicInput').innerHTML = 'Topic: '; };
+  document.getElementById('topicInput').innerHTML = 'Topic: ';
+  rollCount = 0;
+};
+  
 
 document.addEventListener('DOMContentLoaded', (event) => {
+  
   resetBtn.addEventListener('click', resetPage);
 });
 
