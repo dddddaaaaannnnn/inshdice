@@ -150,14 +150,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 //delete button function for input
-  document.addEventListener('DOMContentLoaded', (event) => {
-    document.querySelector('.p-16').addEventListener('click', function(e) {
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('.inputOption').forEach(function(item) {
+    item.addEventListener('click', function(e) {
       if (e.target && e.target.classList.contains('delete-btn')) {
-        const listItem = e.target.closest('li');
-        if (listItem) {
-          const inputField = listItem.querySelector('input');
-          if (inputField) {
-            inputField.value = ''; } } } }); });
+        const inputField = item.querySelector('input');
+        if (inputField) {
+          inputField.value = '';
+        }
+      }
+    });
+  });
+});
+
 
 // Reset button functionality
 const resetPage = () => {
