@@ -219,3 +219,11 @@ infoIcon.addEventListener('click', () => {
 closeInfoBox.addEventListener('click', () => {
   infoBox.classList.add('hidden');
 });
+
+//plays meow sound
+document.getElementById('catIcon').addEventListener('click', function() {
+  document.querySelector('.catMeow').play();
+});
+document.getElementById('rollBtn').addEventListener('click', function() {
+  document.querySelector('.catMeow').play();
+});

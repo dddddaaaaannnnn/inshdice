@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/dice-cat-196.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
  
@@ -120,7 +121,7 @@
                   
               
                 <div class="flex items-center justify-center mb-2">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" id="rollBtn">ROLL!</button>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded" id="rollBtn">ROLL!<audio class="catMeow" src="audio/meow.mp3"></audio></button>
                 </div>
                 <div class="flex items-center justify-center space-x-2 md:space-x-4 mb-4">
                 <button id="screenshot" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded text-xs">SCREENSHOT</button>
@@ -128,7 +129,13 @@
                 </div>
 
                 <div class="flex items-center justify-center space-x-2 md:space-x-4 mb-4">
-                    <a href="https://www.buymeacoffee.com/spartakebap"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a döner &emoji=🌯&slug=spartakebap&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff" class="w-36 h-18" /></a>     
+                    <span id="catIcon" class="relative" style="width: 56px; height: 56px;">
+                    <img src="images/dice-cat-196.png">
+                    <audio class="catMeow" src="audio/meow.mp3"></audio>
+                    </span>
+                    <a href="https://www.buymeacoffee.com/spartakebap">
+                    <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a döner &emoji=🌯&slug=spartakebap&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff" class="w-36 h-18" />
+                    </a>     
                      </div>          
                 <footer class="w-full text-xs text-gray-500 opacity-40 custom-font mt-6"> Dice icons from <a href="https://game-icons.net" target="_blank" class="text-gray-500 opacity-70">Game Icons</a>, used under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" class="text-gray-500 opacity-70">CC BY 3.0</a> / Colors changed from original </footer>
             </div>
